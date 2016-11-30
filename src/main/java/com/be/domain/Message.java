@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
@@ -13,11 +14,8 @@ import java.util.Date;
 
 @Accessors(chain = true)
 @Document(collection = "Message")
-public class Message
+public class Message extends BaseModel
 {
-    @Getter
-    @Setter
-    private String title;
 
     @Getter
     @Setter
@@ -29,14 +27,18 @@ public class Message
 
     @Getter
     @Setter
-    private Account sender;
+    private String senderID;
 
     @Getter
     @Setter
-    private Account receiver;
+    private String receiverID;
 
     @Getter
     @Setter
     private MessageStatus messageStatus;
+
+    @Getter
+    @Setter
+    private String firstName;
 
 }

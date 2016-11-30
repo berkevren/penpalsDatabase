@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Accessors(chain = true)
 @Document(collection = "Profile")
-public class Profile
+public class Profile extends BaseModel
 {
 
     @Getter
@@ -54,11 +54,19 @@ public class Profile
 
     @Getter
     @Setter
-    private String descriction;
+    private String description;
 
     @Getter
     @Setter
     private OnlineStatus onlineStatus;
+
+    @Getter
+    @Setter
+    private String firstDate;
+
+    @Getter
+    @Setter
+    private String secondDate;
 
 
 }

@@ -1,6 +1,7 @@
 package com.be.controller;
 
 import com.be.business.ProfileBusiness;
+import com.be.domain.Account;
 import com.be.domain.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +20,21 @@ public class ProfileController
     @Autowired
     ProfileBusiness profileBusiness;
 
-   /* @GetMapping(value = "/findFriend")
+    /*@RequestMapping(value = "matchPeople")
     @ResponseBody
-    public List<Profile> findFriend(@RequestParam("nation") String nation, @RequestParam("gender") String gender, @RequestParam("age1") int age1, @RequestParam("age2") int age2)
+    public List<Profile> matchPeople(Profile profile)
     {
-        return profileBusiness.findByNationAndGenderAndAge(nation, gender);
+        System.out.println(profile.getFirstName());
+        return profileBusiness.matchPeople(profile);
     }*/
 
-   /* @GetMapping(value = "findBirthDate")
+    @GetMapping(value = "matchPeople")
     @ResponseBody
-    public Profile findByBirthDate(@RequestParam("date")String date)
+    public List<Profile> matchPeople(@RequestParam("nation") String nation, @RequestParam("gender") String gender)
     {
-        return profileBusiness.findByBirthDate(date);
-    }*/
+        Profile profile = new Profile();
+        profile.setNation(nation);
+        profile.setGender(gender);
+        return profileBusiness.matchPeople(profile);
+    }
 }

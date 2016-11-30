@@ -1,8 +1,12 @@
 package com.be.business;
 
+import com.be.domain.Account;
 import com.be.domain.Profile;
+import com.be.repository.AccountRepository;
 import com.be.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,17 +18,14 @@ import java.util.List;
 @Service
 public class ProfileBusiness
 {
+
     @Autowired
     ProfileRepository profileRepository;
 
-    /* public List<Profile> findByNationAndGenderAndAge(String nation, String gender, int age1, int age2)
-     {
-            return profileRepository.findByNationAndGenderAndAge(nation, gender, age1, age2);
-     }*/
+    public List<Profile> matchPeople(Profile profile)
+    {
+        return profileRepository.findAll(Example.of(profile));
+    }
 
-     /*public Profile findByBirthDate(String date)
-     {
-         return  profileRepository.findByBirthDate(date);
-     }*/
 
 }
